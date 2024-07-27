@@ -12,7 +12,7 @@
 (../../issues?q=is%3Aopen+is%3Aissue+label%3A"2+(Med+Risk)"%2C"3+(High+Risk)"+-label%3A"unsatisfactory"%2C"insufficient+quality+report")
 -->
 
-# [Sponsorname] Audit
+# Reserve Audit
 
 Audit findings are submitted to this repo.
 
