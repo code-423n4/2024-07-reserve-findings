@@ -1,0 +1,20 @@
+name: Repo Moderator
+
+on:
+  issues: 
+    types: [labeled, unlabeled, closed, reopened, assigned, unassigned] 
+  pull_request:
+    types: [closed, reopened, assigned, unassigned]
+
+jobs:
+  revert-action:
+    if: github.actor != 'C4-Staff' && github.actor != 'c4-judge' && github.actor != 'howlbot-integration'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Revert Label Changes
+        uses: code-423n4/repo-moderator@main
+        with:
+          github-token: ${{ secrets.ACTIONS_TOKEN }}
+          sponsor-team-slug: "2024-07-reserve-sponsors"
+          allowed-labels: "sponsor confirmed, sponsor disputed, sponsor acknowledged"
