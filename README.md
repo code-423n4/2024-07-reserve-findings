@@ -1,17 +1,3 @@
-<!-- 
-# HMs
-- High/Medium-risk - Updating list
-(../../issues?q=is%3Aopen+is%3Aissue+label%3A%222+(Med+Risk)%22%2C%223+(High+Risk)%22+-label%3A%22unsatisfactory%22%2C%22insufficient+quality+report%22%2C%22sponsor+acknowledged%22%2C%22sponsor+confirmed%22%2C%22sponsor+disputed%22+)
-- High/Medium-risk - Static list
-(../../issues?q=is%3Aopen+is%3Aissue+label%3A%222+(Med+Risk)%22%2C%223+(High+Risk)%22+-label%3A%22unsatisfactory%22%2C%22insufficient+quality+report%22%2C%22sponsor+acknowledged%22%2C%22sponsor+confirmed%22%2C%22sponsor+disputed%22+)
-
-# Reports
-- Reports - Updating list
-(../../issues?q=is%3Aopen+is%3Aissue+-label%3A"sponsor+acknowledged"%2C"sponsor+confirmed"%2C"sponsor+disputed"+label%3A"QA+(Quality+Assurance)"%2C"G+(Gas+Optimization)"%2C"analysis-advanced"+label%3A"grade-a"%2C"selected+for+report"%2C"high+quality+report")
-- Reports - Static list
-(../../issues?q=is%3Aopen+is%3Aissue+label%3A"2+(Med+Risk)"%2C"3+(High+Risk)"+-label%3A"unsatisfactory"%2C"insufficient+quality+report")
--->
-
 # Reserve Audit
 
 Audit findings are submitted to this repo.
@@ -29,7 +15,7 @@ Unless otherwise discussed, this repo will be made public after audit completion
 Sponsors have three critical tasks in the audit process: Reviewing the two lists of curated issues, and once you have mitigated your findings, sharing those mitigations. 
 
 1. [Respond to curated High- and Medium-risk submissions ↓](#1-respond-to-curated-high--and-medium-risk-submissions)
-2. [Respond to curated Low-risk submissions and Gas optimizations ↓](#2-respond-to-curated-low-risk-submissions-and-gas-optimizations)
+2. [Respond to curated Low-risk submissions ↓](#2-respond-to-curated-low-risk-submissions)
 3. [Share your mitigation of findings (optional) ↓](#3-share-your-mitigation-of-findings-optional)
 
 Note: It’s important to be sure to **only review issues from the curated lists.** There are two lists of curated issues to review, which filter out unsatisfactory issues that don't require your attention.
@@ -47,15 +33,15 @@ Wardens submit issues without seeing each other's submissions, so keep in mind t
 Any warden submissions in these two categories are submitted as bulk listings of issues and recommendations:
 
 - **[QA reports](https://docs.code4rena.com/awarding/judging-criteria#qa-reports-low-risk-and-governance-centralization-risk)** include *all* low severity findings and governance/centralization risk findings from an individual warden.
-- **[Gas reports](https://docs.code4rena.com/awarding/judging-criteria#gas-reports)** include *all* gas optimization recommendations from an individual warden.
+- **[Gas reports](https://docs.code4rena.com/awarding/judging-criteria#gas-reports)** (if applicable) include *all* gas optimization recommendations from an individual warden.
 </details>
 <hr>
 
 ## 1. Respond to curated High- and Medium-risk submissions
 
-### [High/Medium-risk findings for review →](../../issues?q=is%3Aopen+is%3Aissue+label%3A%222+(Med+Risk)%22%2C%223+(High+Risk)%22+-label%3A%22unsatisfactory%22%2C%22insufficient+quality+report%22%2C%22sponsor+acknowledged%22%2C%22sponsor+confirmed%22%2C%22sponsor+disputed%22+)
+### [High/Medium-risk findings for review →](../../issues?q=is%3Aopen+is%3Aissue+label%3A%222+%28Med+Risk%29%22%2C%223+%28High+Risk%29%22+-label%3Aunsatisfactory%2C%22insufficient+quality+report%22%2C%22withdrawn+by+warden%22%2C%22sponsor+confirmed%22%2C%22sponsor+acknowledged%22%2C%22sponsor+disputed%22+)
 
-<sup>This curated list will shorten as you work. [View the original, longer list →](../../issues?q=is%3Aopen+is%3Aissue+label%3A"2+(Med+Risk)"%2C"3+(High+Risk)"+-label%3A"unsatisfactory"%2C"insufficient+quality+report")</sup>
+<sup>This curated list will shorten as you work. [View the original, longer list →](../../issues?q=is%3Aopen+is%3Aissue+label%3A%222+%28Med+Risk%29%22%2C%223+%28High+Risk%29%22+-label%3Aunsatisfactory%2C%22insufficient+quality+report%22%2C%22withdrawn+by+warden%22+)</sup>
 
 For each curated High- or Medium-risk finding, please:
 
@@ -78,20 +64,19 @@ Judges have the ultimate discretion in determining validity and severity of issu
 
 <hr>
 
-## 2. Respond to curated Low-risk submissions and Gas optimizations
+## 2. Respond to curated Low-risk submissions
 
-### [Low-risk submissions and Gas optimizations for review →](../../issues?q=is%3Aopen+is%3Aissue+-label%3A"sponsor+acknowledged"%2C"sponsor+confirmed"%2C"sponsor+disputed"+label%3A"QA+(Quality+Assurance)"%2C"G+(Gas+Optimization)"%2C"analysis-advanced"+sort%3Acreated-asc)
+### [Low-risk submissions →](../../issues?q=is%3Aopen+is%3Aissue+label%3A"QA+%28Quality+Assurance%29"+-label%3Aunsatisfactory%2Cgrade-c%2C"insufficient+quality+report"%2C"withdrawn+by+warden"%2C"sponsor+confirmed"%2C"sponsor+acknowledged"%2C"sponsor+disputed")
 
-<sup>This curated list will shorten as you work. [View the original, longer list →](../../issues?q=is%3Aopen+is%3Aissue+label%3A"QA+(Quality+Assurance)"%2C"G+(Gas+Optimization)"%2C"analysis-advanced"+sort%3Acreated-asc)</sup>
+<sup>This curated list will shorten as you work. [View the original, longer list →](../../issues?q=is%3Aopen+is%3Aissue+label%3A"QA+%28Quality+Assurance%29"+-label%3Aunsatisfactory%2Cgrade-c%2C"insufficient+quality+report"%2C"withdrawn+by+warden")</sup>
 
 - Leave a comment for the judge on any reports you consider to be particularly high quality.
 - Add the `sponsor disputed` label to any reports that you think should be completely disregarded by the judge, i.e. the report contains no valid findings at all.
 
-<hr>
-
 ## Once Step 1 and 2 are complete
 
 When you have finished labeling and responding to findings, drop the C4 team a note in your private Discord backroom channel and let us know you've completed the sponsor review process. At this point, we will pass the repo over to the judge to review your feedback while you work on mitigations.
+
 
 <hr>
 
@@ -116,4 +101,4 @@ If several findings are inextricably related (e.g. two potential exploits of the
 1. Within a repo in your own GitHub organization, create a pull request for each finding.
 2. Link the PR to the issue that it resolves within your audit findings repo. (If the issue in question has duplicates, please link to your PR from the open/primary issue.)
 
-This will allow for complete transparency in showing the work of mitigating the issues found in the audit. 
+This will allow for complete transparency in showing the work of mitigating the issues found in the audit.
