@@ -1,0 +1,8 @@
+{
+  "contest": 421,
+  "handle": "ether_sky",
+  "risk": "2",
+  "title": "The traceEnd in BackingManager isn't updating correctly",
+  "issueId": 6,
+  "issueUrl": "https://github.com/code-423n4/2024-07-reserve-findings/issues/6"
+}
