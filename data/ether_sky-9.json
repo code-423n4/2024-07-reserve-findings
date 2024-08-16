@@ -1,0 +1,8 @@
+{
+  "contest": 421,
+  "handle": "ether_sky",
+  "risk": "2",
+  "title": "A token with a refPerTok value of 0 can prevent the recollateralization process",
+  "issueId": 9,
+  "issueUrl": "https://github.com/code-423n4/2024-07-reserve-findings/issues/9"
+}
