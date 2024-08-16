@@ -1,0 +1,8 @@
+{
+  "contest": 421,
+  "handle": "ether_sky",
+  "risk": "2",
+  "title": "The basket can mistakenly be disabled when unregistering a token that is not in the basket",
+  "issueId": 7,
+  "issueUrl": "https://github.com/code-423n4/2024-07-reserve-findings/issues/7"
+}
