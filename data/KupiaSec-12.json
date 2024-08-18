@@ -1,0 +1,8 @@
+{
+  "contest": 421,
+  "handle": "KupiaSec",
+  "risk": "3",
+  "title": "Incorrect buying asset calculation in `nextTradePair`",
+  "issueId": 12,
+  "issueUrl": "https://github.com/code-423n4/2024-07-reserve-findings/issues/12"
+}
