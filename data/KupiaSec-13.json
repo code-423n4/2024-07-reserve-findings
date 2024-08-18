@@ -1,0 +1,8 @@
+{
+  "contest": 421,
+  "handle": "KupiaSec",
+  "risk": "2",
+  "title": "Invalid prorata check in `redeemCustom`",
+  "issueId": 13,
+  "issueUrl": "https://github.com/code-423n4/2024-07-reserve-findings/issues/13"
+}
