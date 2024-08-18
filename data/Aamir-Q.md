@@ -170,3 +170,122 @@ If an `RToken` is using `AssetPluginRegistry`, then when a new asset is register
 **Mitigation:**
 
 Add checks to ensure that the asset is not deprecated.
+
+## [Low-3] Rewards distribution can be front-runned with RSR token deposit in `StRSR` in order to receive the same amount of rewards (or more) as other but not bearing any risk of the defaults from the beginning.
+
+When new RSR rewards are distributed to the StRSR contract, The `stakeRSR` is increased with the value of rewards amount since the last `payoutLastPaid`:
+
+```solidity
+    function _payoutRewards() internal {
+        if (block.timestamp < payoutLastPaid + 1) return;
+        uint48 numPeriods = uint48(block.timestamp) - payoutLastPaid;
+
+        uint192 initRate = exchangeRate();
+        uint256 payout;
+
+        // Do an actual payout if and only if enough RSR is staked!
+        if (totalStakes >= FIX_ONE) {
+            // Paying out the ratio r, N times, equals paying out the ratio (1 - (1-r)^N) 1 time.
+            // Apply payout to RSR backing
+            // payoutRatio: D18 = FIX_ONE: D18 - FixLib.powu(): D18
+            // Both uses of uint192(-) are fine, as it's equivalent to FixLib.sub().
+@>            uint192 payoutRatio = FIX_ONE - FixLib.powu(FIX_ONE - rewardRatio, numPeriods);
+
+            // payout: {qRSR} = D18{1} * {qRSR} / D18
+@>            payout = (payoutRatio * rsrRewardsAtLastPayout) / FIX_ONE;
+@>            stakeRSR += payout;
+        }
+```
+
+But it could be really unfair with the existing depositors. Because since the `stakeRSR` is increased directly, the `stakeRate` will decrease. Which means more `RSR` can be received for `stRSR`. And hence the following can happen:
+
+1. Alice deposits at `T-0`, `100e18` RSR.
+2. At time `T-100`, let's say there were new rewards distributed.
+3. Bob saw that and he decide to front run the rewards distribution.
+4. Bob deposits `100e18` frontrunning the rewards distribution.
+5. Now let's say he waited for a week to get rewards accumulated as they are distributed over time.
+6. Now if the  alice and bob withdraw their tokens at the same time, both of them will get the same amount of rewards. 
+
+Even though he didn't stake his token from the beginning, he received the same amount of rewards. On the other hand, alice deposited from the beginning and had to bear the risk of losing her tokens.
+
+Bob can even deposit big amount of tokens and could receive large portion of the rewards.
+
+This could be more unfair if `unstakingDelay` is less very less. The acceptable range is between `2 mins` to `1 year`. so if it is set to lets say `15 mins` a user after accumulating rewards can withdraw quickly.
+
+**Proof Of Concept:**
+
+Test demonstrates the scenario where bob recieved bigger share of the rewards by depositing bigger amount.
+
+```js
+            it.only("Staker can stake just before the rewards are distributed and earn equal or more rewards", async()=>{
+              // setupup new basket with only token0
+              await basketHandler.connect(owner).setPrimeBasket([token0.address], [fp('1')]);
+
+              // refresh the basket
+              await basketHandler.refreshBasket();
+
+              // pass the warmup period
+              await advanceTime(config.warmupPeriod.toString());
+
+              // alice issue some tokens
+              await rToken.connect(alice).issue(bn('100e18'));
+
+              // backing manager balance should be equal to initialBal. And should be fully collateralized
+              expect(await basketHandler.fullyCollateralized()).to.be.true;
+              expect(await basketHandler.status()).to.be.eql(CollateralStatus.SOUND);
+              expect(await basketHandler.isReady()).to.be.true;
+
+
+              // alice stakes some RSR
+              await stRSR.connect(alice).stake(bn('100e18'));
+              
+              // advance 1 week
+              await advanceTime(604800);
+
+              // bob stakes some RSR just before the new rewards
+              await stRSR.connect(bob).stake(bn('10000e18'));
+
+              // new rewards came in the form of RSR
+              await rsr.connect(owner).mint(stRSR.address, bn('100e18'));
+
+              // call the payout Rewards function
+              await stRSR.connect(owner).payoutRewards();
+
+              // advance time
+              await advanceTime(604800);
+              
+              // after accruing some rewards, bob and alice unstake their RSR
+              // bob unstakes
+              await stRSR.connect(bob).unstake(bn('10000e18'));
+
+              // alice unstakes
+              await stRSR.connect(alice).unstake(bn('100e18'));
+
+              // pass the delay period
+              await advanceTime(config.unstakingDelay.toString());
+
+              // bob and alice's RSR balance before
+              const bobBalBefore = await rsr.balanceOf(bob.address);
+              const aliceBalBefore = await rsr.balanceOf(alice.address);
+
+              // alice and bob withdraws their RSR
+              await stRSR.connect(alice).withdraw(alice.address, 1);
+              await stRSR.connect(bob).withdraw(bob.address, 1);
+
+              // bob and alice's RSR balance after
+              const bobBalAfter = await rsr.balanceOf(bob.address);
+              const aliceBalAfter = await rsr.balanceOf(alice.address);
+
+              console.log("Bob's RSR balance: ", bobBalAfter.sub(bobBalBefore).toString());
+              console.log("Alice's RSR balance: ", aliceBalAfter.sub(aliceBalBefore).toString());
+              console.log("Rewards Bob Earned: ", bobBalAfter.sub(bn("100000e18")).toString());
+              console.log("Rewards Alice Earned: ", aliceBalAfter.sub(bn("100000e18")).toString());
+            })
+
+```
+
+**Mitigation:**
+
+To mitigate this The following strategy could be used:
+keep the new stakes in a pending queue and do not add them directly to the stakes. And introduce a new delay period that this pending stake have to pass in order to be eligible for the rewards and get added to the `stakeRSR`. 
+Or use some other strategy.
