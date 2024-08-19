@@ -1,0 +1,8 @@
+{
+  "contest": 421,
+  "handle": "RadiantLabs",
+  "risk": "2",
+  "title": "Issuance rate limit can be bypassed due to compounding effect in throttle mechanism",
+  "issueId": 31,
+  "issueUrl": "https://github.com/code-423n4/2024-07-reserve-findings/issues/31"
+}
