@@ -1,0 +1,8 @@
+{
+  "contest": 421,
+  "handle": "krikolkk",
+  "risk": "2",
+  "title": "Stake rate can be updated by functions that should not update it",
+  "issueId": 44,
+  "issueUrl": "https://github.com/code-423n4/2024-07-reserve-findings/issues/44"
+}
