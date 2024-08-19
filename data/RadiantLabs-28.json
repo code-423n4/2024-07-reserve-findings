@@ -1,0 +1,8 @@
+{
+  "contest": 421,
+  "handle": "RadiantLabs",
+  "risk": "2",
+  "title": "No check for sequencer uptime can lead to dutch auctions executing at bad prices",
+  "issueId": 28,
+  "issueUrl": "https://github.com/code-423n4/2024-07-reserve-findings/issues/28"
+}
