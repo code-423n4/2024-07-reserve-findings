@@ -519,7 +519,7 @@ function seizeRSR(uint256 rsrAmount) external {
 However, I believe there’s no need to send this excess `RSR` to the `BackingManager`. 
 Instead, it should remain in the `STRSR` as rewards to incentivize future `stakers`. 
 Additionally, even if the excess `RSR` stays in the `STRSR`, it can still be used in future `recollateralization`. 
-Moreover, any `RSR` sent to the `BackingManager` would eventually return to the `STRSR` through the `RSRTrader` and `Distributor` once the `basket` is fully collateralized.
+Moreover, any `RSR` sent to the `BackingManager` would eventually return to the `STRSR` through `forwardRevenue` function once the `basket` is fully collateralized.
 
 # [L-14] Only the same kind of trades can happen in the recollateralization
 
