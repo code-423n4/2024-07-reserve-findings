@@ -38,8 +38,6 @@ While this is not an issue for the Asset itself which doesn't directly combine t
 
 Consider changing `MAX_HIGH_PRICE_BUFFER` to `FIX_ONE` instead.
 
-----
-
 ## [L-2] "Flash" upgrade can be abused to create rigged but honest-looking RToken contracts
 
 ### Links to affected code
@@ -57,8 +55,6 @@ Because the Deployer doesn't set `versionRegistry` but let the contract admin pr
 All of the above can be achieved in one single transaction (hence the "Flash upgrade" term used above), possibly to be bundled with the contract creation or buried in a long list of spammy interactions to lower the chances of detection; after a moderately sophisticated attack like [the one presented in PoC](https://gist.github.com/3docSec/1cf7037b38f72719326f0f59d3f787f2) there can be no signs of past wrongdoing in the result of any of the RToken contracts' getters.
 
 Consider having the Deployer set `Main.versionRegistry` at RToken deployment time to enforce continued use of trusted code.
-
-----
 
 ## [L-3] Prime basket weights are not properly validated
 
@@ -87,15 +83,12 @@ This check is however insufficient because excessively low values of `targetAmt`
 
 Consider enforcing the [range specified in the acceptable values for prime basket weights](https://github.com/code-423n4/2024-07-reserve/blob/3f133997e186465f4904553b0f8e86ecb7bbacbf/docs/solidity-style.md?plain=1#L105), at the very least by requiring `targetAmts` to be `1e-6 (D18)` or more instead of the `1e-18 (D18)` or more that is currently allowed.
 
-----
-
 ## [L-4] RToken issuance/redemption throttles can be monopolized by Bundlers and Batchers
 
 ### Links to affected code
 https://github.com/code-423n4/2024-07-reserve/blob/3f133997e186465f4904553b0f8e86ecb7bbacbf/contracts/p1/RToken.sol#L121-L122
 https://github.com/code-423n4/2024-07-reserve/blob/3f133997e186465f4904553b0f8e86ecb7bbacbf/contracts/p1/RToken.sol#L199-L200
 https://github.com/code-423n4/2024-07-reserve/blob/3f133997e186465f4904553b0f8e86ecb7bbacbf/contracts/p1/RToken.sol#L277-L278
-
 
 ### Description
 
@@ -104,8 +97,6 @@ When the RToken issuance and redemption are close to their limits, every upcomin
 This means that actors that can control the ordering of transactions, and/or when a transaction is executed, like MEV bundlers and gasless transaction batchers, will have the upper hand on using these available amounts, potentially monopolizing them for themselves.
 
 We don't have a suggested mitigation for the contracts in the scope, but we'd rather issue a recommendation for users to use private mempools and avoid gasless transactions for operations involving RToken issuance and redemption.
-
-----
 
 ## [L-5] Broker accepts `batchAuctionLength` and `dutchAuctionLength` to be both `0`
 
@@ -152,8 +143,6 @@ It does however not validate the situation when they are both provided as `0`. T
 
 Consider adding additional checks in `setBatchAuctionLength` and `setDutchAuctionLength` to prevent setting both to `0`.
 
-----
-
 ## [L-6] PermitLib uses two different ERC1271 implementations for the same call
 
 ### Links to affected code
@@ -168,9 +157,7 @@ If we look at [the `isValidSignatureNow` implementation of the imported OZ versi
 
 The `if isContract` branch in `requireSignature` is therefore useless because it's redundant with the other, more standard, branch and we therefore recommend removing it.
 
-----
-
-## [L-7] VersionRegistry.latestVersion does not support semantic versioning
+## [L-7] `VersionRegistry.latestVersion()` does not support semantic versioning
 
 ### Links to affected code
 
@@ -186,9 +173,7 @@ In the event that the protocol releases `4.0.0` and shortly after `3.4.2`, then 
 
 Consider adding a `boolean` flag to the `registerVersion` function, allowing the caller to specify whether `latestVersion` should be updated or not.
 
-----
-
-## [L-8] DutchTrade.bidWithCallback does not send back excess tokens
+## [L-8] `DutchTrade.bidWithCallback()` does not send back excess tokens
 
 ### Links to affected code
 
@@ -211,8 +196,6 @@ File: DutchTrade.sol
 ```
 
 However, if extra tokens are given, the function does not return the extras to the caller. Consider adding a check to return extra tokens if any are provided
-
-----
 
 ## [L-9] Missing check to avoid circular dependencies among RTokens
 
@@ -250,9 +233,7 @@ While the RTokenB governance action can be seen as a mistake, RTokenA is affecte
 
 Consider adding a `price()` call after `trackStatus()` to trigger a failure in the above-mentioned case.
 
-----
-
-## [L-10] StRSRVotes.delegateBySig() misses check for delegation to happen in the era intended by the signer
+## [L-10] `StRSRVotes.delegateBySig()` misses check for delegation to happen in the era intended by the signer
 
 ### Links to affected code
 
@@ -292,3 +273,41 @@ This means that a delegation signature can be reused across era changes, despite
 
 Consider adding an `era` field to the signed payload for `StRSRVotes.delegateBySig()`
 
+## [L-11] Potential DAO fee rounding to zero for upgraded RTokens
+
+Upgraded RTokens might not pay DAO fees even if `daoFeeRegistry` has been set in `Main`. This is due to the change in the distribution total constraint in the `_ensureSufficientTotal()` function.
+
+In previous versions, the check only required one of `rTokenDist` or `rsrDist` to be non-zero. The current implementation requires their sum to be greater than or equal to `MAX_DISTRIBUTION`. RTokens initialized with small distribution values in previous versions might not meet this new constraint after upgrading.
+
+For small `rTokenTotal` and `rsrTotal` values, the [DAO fee calculation](https://github.com/code-423n4/2024-07-reserve/blob/3f133997e186465f4904553b0f8e86ecb7bbacbf/contracts/p1/Distributor.sol#L221-L223)in the `distribute()` function will round down to 0.
+
+Consider implementing a post-upgrade call to `_ensureSufficientTotal()`.
+
+## [L-12] Changing distributions between revenue split and distribution can affect DAO fee amounts
+
+Building upon the issue identified in TRST-L-2 of the Trust Security audit report for v4.0.0, there are additional impacts related to changing distributions between when revenue is split in the `BackingManager` and when it's distributed in the `Distributor`:
+
+1. If RToken governance alters the distribution to heavily favor `rsrTotal` over `rTokenTotal`, they can significantly reduce the effective DAO fee for that cycle.
+2. If the DAO changes the fee percentage during this period, the RToken might end up paying more or less than would be fair for that cycle. This is very likely to happen to one RToken or the other whenever veRSR governance changes the fee.
+
+These issues, like the one identified in TRST-L-2, are temporary and limited to single distribution cycles. The first case could be repeated and even automated to continuously evade paying the appropriate DAO fee.
+
+## [L-13] Issuance premium calculation may be inaccurate for view functions
+
+The `issuancePremium()` function in `BasketHandler` assumes that `refresh()` has been called on the collateral token in the current block. If this assumption is not met, it returns `FIX_ONE` instead of calculating the actual premium. While this is generally not an issue because the protocol holds this invariant, it can lead to inaccurate results when called from external view functions that cannot trigger a `refresh()`, such as `RTokenAsset.price()`.
+
+To improve accuracy and consistency, consider modifying `issuancePremium()` to calculate the premium regardless of when `refresh()` was last called. This would ensure more accurate premium values are returned even when accessed through view functions or external calls.
+
+## [L-14] Distribution validation is inconsistent due to inclusion of variable DAO fee
+
+The `Distributor._ensureSufficientTotal()` function is called with the return values of `totals()`, which includes the DAO fee in its calculations. This can lead to a situation where previously valid distributions become invalid if the DAO fee is lowered, as the sum of `rTokenTotal` and `rsrTotal` may fall below `MAX_DISTRIBUTION`.
+
+To ensure consistent behavior regardless of DAO fee changes, `_ensureSufficientTotal()` should only consider the sum of `rTokenDist` and `rsrDist` values from the actual distributions, excluding the DAO fee.
+
+## [L-15] BackingManager fails to reset trade timing after early Dutch auction settlement
+
+When a Dutch auction started by the BackingManager finishes ahead of schedule, it calls `BackingManager.settleTrade()`, which attempts to chain another rebalance. If this chained rebalance succeeds, a new Dutch auction is started. However, if it fails or no trade is needed, the `tradeEnd[kind]` timestamp is not reset. This results in no new trades being possible until the predetermined duration has passed, even though the auction completed early.
+
+It's worth noting that batch auctions are still possible in this scenario because `tradesOpen` will be 0.
+
+Recommendation: set `tradeEnd[kind]` to `block.timestamp` in `settleTrade()` if it is in the future.
