@@ -1,0 +1,8 @@
+{
+  "contest": 421,
+  "handle": "RadiantLabs",
+  "risk": "2",
+  "title": "Dutch auction participants can lose funds in case the auction creation transaction is part of a chain reorg",
+  "issueId": 24,
+  "issueUrl": "https://github.com/code-423n4/2024-07-reserve-findings/issues/24"
+}
