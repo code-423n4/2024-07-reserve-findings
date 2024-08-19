@@ -289,3 +289,37 @@ Test demonstrates the scenario where bob recieved bigger share of the rewards by
 To mitigate this The following strategy could be used:
 keep the new stakes in a pending queue and do not add them directly to the stakes. And introduce a new delay period that this pending stake have to pass in order to be eligible for the rewards and get added to the `stakeRSR`. 
 Or use some other strategy.
+
+
+## [Low-4] `BackingManager::rebalance(...)` can be called by anyone which can cause loss of value in case of Market shifts.
+
+Currently the only conditions that should met in order to call `BackingManager::rebalance(...)` is that new basket should be ready and there should not be any existing trade for a `TradeKind`. As long as these are met, anyone can come and call the rebalance function:
+
+```solidity
+    function rebalance(TradeKind kind) external nonReentrant {
+        requireNotTradingPausedOrFrozen();
+
+
+        // == Refresh ==
+        assetRegistry.refresh();
+
+
+        // DoS prevention:
+        // unless caller is self, require that the next auction is not in same block
+        require(
+@>            _msgSender() == address(this) || tradeEnd[kind] < block.timestamp,
+            "already rebalancing"
+        );
+
+
+```
+
+GitHub: [107-119](https://github.com/code-423n4/2024-07-reserve/blob/3f133997e186465f4904553b0f8e86ecb7bbacbf/contracts/p1/BackingManager.sol#L107C1-L119C1)
+
+But this could be very dangerous thing from the perspective of the protocol. Because let's say market is in bad condition and need some time in order to recover. But due to no restriction in the function, anyone can call it and make the trade even at the bad market prices causing the loss of value to the protocol.
+
+Currently there is a trading pause that could be applied to prevent this from happening, but trading pause is very crucial thing as it pauses the most of the functionality of the protocol. Also After having a communication with the protocol team, they replied that trading pause is there mostly for the cases when  there is some kind of bug in the protocol or something serious like this happens. 
+
+**Mitigation**
+
+There should be some kind of restriction to the function so that we don't have to pause the whole trading and could get rid of the issue.
