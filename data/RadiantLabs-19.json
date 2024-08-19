@@ -1,0 +1,8 @@
+{
+  "contest": 421,
+  "handle": "RadiantLabs",
+  "risk": "3",
+  "title": "GnosisTrade's MAX_ORDERS limit can be circumvented to DoS RToken recollateralization",
+  "issueId": 19,
+  "issueUrl": "https://github.com/code-423n4/2024-07-reserve-findings/issues/19"
+}
