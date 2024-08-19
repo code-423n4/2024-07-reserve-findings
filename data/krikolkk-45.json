@@ -1,0 +1,8 @@
+{
+  "contest": 421,
+  "handle": "krikolkk",
+  "risk": "2",
+  "title": "Protocol does not implement protection against upgradeable ERC-20s",
+  "issueId": 45,
+  "issueUrl": "https://github.com/code-423n4/2024-07-reserve-findings/issues/45"
+}
