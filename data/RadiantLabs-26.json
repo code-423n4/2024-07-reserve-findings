@@ -1,0 +1,8 @@
+{
+  "contest": 421,
+  "handle": "RadiantLabs",
+  "risk": "2",
+  "title": "Reward accounting functions still vulnerable to bypassing, leading to unintended reward distribution",
+  "issueId": 26,
+  "issueUrl": "https://github.com/code-423n4/2024-07-reserve-findings/issues/26"
+}
