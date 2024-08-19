@@ -1,0 +1,8 @@
+{
+  "contest": 421,
+  "handle": "LessDupes",
+  "risk": "2",
+  "title": "Upgradeability of collateral assets opens up the doors to reentrancy vulnerabilities",
+  "issueId": 52,
+  "issueUrl": "https://github.com/code-423n4/2024-07-reserve-findings/issues/52"
+}
