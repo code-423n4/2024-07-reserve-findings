@@ -1048,3 +1048,21 @@ function mul(
 264:    return _safeWrap(_divrnd(uint256(x) * uint256(y), FIX_SCALE, rounding));
 }
 ```
+
+# [L-33] The `assetRegistry` should be refreshed before checking the `basketHandler` status
+
+When withdrawing staked `RSR` in the `StRSR` contract, the `assetRegistry` is not refreshed every time. 
+Instead, a `leakyRefresh` function triggers a refresh only when the total withdrawal amount, without prior refreshing, reaches a defined threshold (`line 336`).
+However, the `isReady` and `fullyCollateralized` functions of the `basketHandler` are still called during the process (`line 341`). 
+https://github.com/code-423n4/2024-07-reserve/blob/3f133997e186465f4904553b0f8e86ecb7bbacbf/contracts/p1/StRSR.sol#L341
+```
+function withdraw(address account, uint256 endId) external {
+336:    leakyRefresh(rsrAmount);
+    IERC20Upgradeable(address(rsr)).safeTransfer(account, rsrAmount);
+    emit UnstakingCompleted(firstId, endId, draftEra, account, rsrAmount);
+
+341:    require(basketHandler.isReady() && basketHandler.fullyCollateralized(), "RToken readying");
+}
+```
+Since these functions can return outdated information, the `assetRegistry` should be refreshed before calling them. 
+Otherwise, withdrawals might proceed when the `basketHandler` is not ready or not fully collateralized.
