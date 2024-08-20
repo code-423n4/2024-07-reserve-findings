@@ -1,0 +1,10 @@
+{
+  "contest": 421,
+  "handle": "Bauchibred",
+  "risk": "2",
+  "title": "The `AllowanceLib#safeApproveFallbackToMax()` would be non-functional for some supported tokens",
+  "issueId": 106,
+  "issueUrl": "https://github.com/code-423n4/2024-07-reserve-findings/issues/106",
+  "originalIssueId": 2,
+  "originalIssueUrl": "https://github.com/code-423n4/2024-07-reserve-validation/issues/2"
+}
