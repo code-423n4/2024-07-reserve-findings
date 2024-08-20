@@ -1,0 +1,10 @@
+{
+  "contest": 421,
+  "handle": "kildren",
+  "risk": "3",
+  "title": "Potential Manipulation of Draft RSR During Mass Unstaking Events",
+  "issueId": 73,
+  "issueUrl": "https://github.com/code-423n4/2024-07-reserve-findings/issues/73",
+  "originalIssueId": 141,
+  "originalIssueUrl": "https://github.com/code-423n4/2024-07-reserve-validation/issues/141"
+}
