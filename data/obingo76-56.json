@@ -1,0 +1,10 @@
+{
+  "contest": 421,
+  "handle": "obingo76",
+  "risk": "3",
+  "title": "Custom Redemption Vulnerability in Reserve Protocol Allows Value Extraction",
+  "issueId": 56,
+  "issueUrl": "https://github.com/code-423n4/2024-07-reserve-findings/issues/56",
+  "originalIssueId": 237,
+  "originalIssueUrl": "https://github.com/code-423n4/2024-07-reserve-validation/issues/237"
+}
