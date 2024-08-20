@@ -1,0 +1,10 @@
+{
+  "contest": 421,
+  "handle": "OdeWeb3",
+  "risk": "3",
+  "title": "Delegation to the `zero address` can lead to permanent loss of the user's voting power",
+  "issueId": 98,
+  "issueUrl": "https://github.com/code-423n4/2024-07-reserve-findings/issues/98",
+  "originalIssueId": 208,
+  "originalIssueUrl": "https://github.com/code-423n4/2024-07-reserve-validation/issues/208"
+}
