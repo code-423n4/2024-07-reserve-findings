@@ -1,0 +1,10 @@
+{
+  "contest": 421,
+  "handle": "Matin",
+  "risk": "2",
+  "title": "Precision loss when calculating the transfer amount inside the distribute function of the Distributor contract",
+  "issueId": 92,
+  "issueUrl": "https://github.com/code-423n4/2024-07-reserve-findings/issues/92",
+  "originalIssueId": 21,
+  "originalIssueUrl": "https://github.com/code-423n4/2024-07-reserve-validation/issues/21"
+}
