@@ -1,0 +1,10 @@
+{
+  "contest": 421,
+  "handle": "Agontuk",
+  "risk": "2",
+  "title": "Unintended Token Transfer Can Disrupt Distribution Process (`RevenueTraderP1::returnTokens`)",
+  "issueId": 84,
+  "issueUrl": "https://github.com/code-423n4/2024-07-reserve-findings/issues/84",
+  "originalIssueId": 59,
+  "originalIssueUrl": "https://github.com/code-423n4/2024-07-reserve-validation/issues/59"
+}
