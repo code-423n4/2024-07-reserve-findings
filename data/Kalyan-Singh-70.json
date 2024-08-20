@@ -1,0 +1,10 @@
+{
+  "contest": 421,
+  "handle": "Kalyan-Singh",
+  "risk": "3",
+  "title": "First depositer in rToken can ensure that second always suffers a loss of funds",
+  "issueId": 70,
+  "issueUrl": "https://github.com/code-423n4/2024-07-reserve-findings/issues/70",
+  "originalIssueId": 154,
+  "originalIssueUrl": "https://github.com/code-423n4/2024-07-reserve-validation/issues/154"
+}
