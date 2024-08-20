@@ -1,0 +1,10 @@
+{
+  "contest": 421,
+  "handle": "DanielArmstrong",
+  "risk": "3",
+  "title": "Throttle rate is applied incorrectly.",
+  "issueId": 89,
+  "issueUrl": "https://github.com/code-423n4/2024-07-reserve-findings/issues/89",
+  "originalIssueId": 38,
+  "originalIssueUrl": "https://github.com/code-423n4/2024-07-reserve-validation/issues/38"
+}
