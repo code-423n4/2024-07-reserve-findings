@@ -1,0 +1,10 @@
+{
+  "contest": 421,
+  "handle": "Giorgio",
+  "risk": "2",
+  "title": "No check for sequencer uptime will lead dutch auctions executing at worst prices",
+  "issueId": 99,
+  "issueUrl": "https://github.com/code-423n4/2024-07-reserve-findings/issues/99",
+  "originalIssueId": 174,
+  "originalIssueUrl": "https://github.com/code-423n4/2024-07-reserve-validation/issues/174"
+}
