@@ -1,0 +1,10 @@
+{
+  "contest": 421,
+  "handle": "0x52",
+  "risk": "2",
+  "title": "rTokenTrader#distributeTokenToBuy could be bypassed during setDistribution by purposefully providing too little gas",
+  "issueId": 61,
+  "issueUrl": "https://github.com/code-423n4/2024-07-reserve-findings/issues/61",
+  "originalIssueId": 205,
+  "originalIssueUrl": "https://github.com/code-423n4/2024-07-reserve-validation/issues/205"
+}
