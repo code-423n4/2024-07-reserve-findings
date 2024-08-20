@@ -1,0 +1,10 @@
+{
+  "contest": 421,
+  "handle": "stuart_the_minion",
+  "risk": "2",
+  "title": "Potential Risk that Deprecated Assets can be Used as Valid Ones",
+  "issueId": 91,
+  "issueUrl": "https://github.com/code-423n4/2024-07-reserve-findings/issues/91",
+  "originalIssueId": 33,
+  "originalIssueUrl": "https://github.com/code-423n4/2024-07-reserve-validation/issues/33"
+}
