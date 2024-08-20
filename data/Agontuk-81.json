@@ -1,0 +1,10 @@
+{
+  "contest": 421,
+  "handle": "Agontuk",
+  "risk": "2",
+  "title": "Attacker can force basket disabling during asset unregistration (`AssetRegistryP1::unregister`)",
+  "issueId": 81,
+  "issueUrl": "https://github.com/code-423n4/2024-07-reserve-findings/issues/81",
+  "originalIssueId": 73,
+  "originalIssueUrl": "https://github.com/code-423n4/2024-07-reserve-validation/issues/73"
+}
