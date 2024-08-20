@@ -1,0 +1,10 @@
+{
+  "contest": 421,
+  "handle": "lightoasis",
+  "risk": "2",
+  "title": "StRSRVotes owners can block token burning and transfer by delegating to zero address.",
+  "issueId": 105,
+  "issueUrl": "https://github.com/code-423n4/2024-07-reserve-findings/issues/105",
+  "originalIssueId": 24,
+  "originalIssueUrl": "https://github.com/code-423n4/2024-07-reserve-validation/issues/24"
+}
