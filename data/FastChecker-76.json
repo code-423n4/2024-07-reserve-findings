@@ -1,0 +1,10 @@
+{
+  "contest": 421,
+  "handle": "FastChecker",
+  "risk": "3",
+  "title": "Unexpected loss of funds due to missing of the return value check",
+  "issueId": 76,
+  "issueUrl": "https://github.com/code-423n4/2024-07-reserve-findings/issues/76",
+  "originalIssueId": 119,
+  "originalIssueUrl": "https://github.com/code-423n4/2024-07-reserve-validation/issues/119"
+}
