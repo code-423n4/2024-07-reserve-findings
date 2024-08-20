@@ -1,0 +1,10 @@
+{
+  "contest": 421,
+  "handle": "DanielArmstrong",
+  "risk": "2",
+  "title": "Admin can't set throttle amount as zero.",
+  "issueId": 90,
+  "issueUrl": "https://github.com/code-423n4/2024-07-reserve-findings/issues/90",
+  "originalIssueId": 35,
+  "originalIssueUrl": "https://github.com/code-423n4/2024-07-reserve-validation/issues/35"
+}
