@@ -1,0 +1,10 @@
+{
+  "contest": 421,
+  "handle": "CAUsr",
+  "risk": "3",
+  "title": "Reentrancy in RToken may lead to complete loss of funds",
+  "issueId": 102,
+  "issueUrl": "https://github.com/code-423n4/2024-07-reserve-findings/issues/102",
+  "originalIssueId": 103,
+  "originalIssueUrl": "https://github.com/code-423n4/2024-07-reserve-validation/issues/103"
+}
