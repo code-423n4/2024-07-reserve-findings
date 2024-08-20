@@ -1,0 +1,10 @@
+{
+  "contest": 421,
+  "handle": "0x52",
+  "risk": "2",
+  "title": "rsr can be unregistered from AssetRegistry to prevent seizure of stRSR holdings",
+  "issueId": 65,
+  "issueUrl": "https://github.com/code-423n4/2024-07-reserve-findings/issues/65",
+  "originalIssueId": 188,
+  "originalIssueUrl": "https://github.com/code-423n4/2024-07-reserve-validation/issues/188"
+}
