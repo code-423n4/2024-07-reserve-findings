@@ -1,0 +1,10 @@
+{
+  "contest": 421,
+  "handle": "Bauchibred",
+  "risk": "2",
+  "title": "Not enough gas might still pass on Arbitrum breaking the logic",
+  "issueId": 95,
+  "issueUrl": "https://github.com/code-423n4/2024-07-reserve-findings/issues/95",
+  "originalIssueId": 11,
+  "originalIssueUrl": "https://github.com/code-423n4/2024-07-reserve-validation/issues/11"
+}
