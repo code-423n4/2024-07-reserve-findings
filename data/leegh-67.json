@@ -1,0 +1,10 @@
+{
+  "contest": 421,
+  "handle": "leegh",
+  "risk": "3",
+  "title": "`rsrRewardsAtLastPayout` is incorrectly updated to a smaller value in `seizeRSR`.",
+  "issueId": 67,
+  "issueUrl": "https://github.com/code-423n4/2024-07-reserve-findings/issues/67",
+  "originalIssueId": 168,
+  "originalIssueUrl": "https://github.com/code-423n4/2024-07-reserve-validation/issues/168"
+}
