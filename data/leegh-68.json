@@ -1,0 +1,10 @@
+{
+  "contest": 421,
+  "handle": "leegh",
+  "risk": "2",
+  "title": "The supply throttle checking in issuance should be performed after the `_scaleUp`.",
+  "issueId": 68,
+  "issueUrl": "https://github.com/code-423n4/2024-07-reserve-findings/issues/68",
+  "originalIssueId": 165,
+  "originalIssueUrl": "https://github.com/code-423n4/2024-07-reserve-validation/issues/165"
+}
