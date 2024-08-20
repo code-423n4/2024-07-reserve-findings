@@ -1,0 +1,10 @@
+{
+  "contest": 421,
+  "handle": "Agontuk",
+  "risk": "3",
+  "title": "Incorrect Balance Update in `FurnaceP1::melt()` Will Lead to Reduced RToken Melting Over Time",
+  "issueId": 82,
+  "issueUrl": "https://github.com/code-423n4/2024-07-reserve-findings/issues/82",
+  "originalIssueId": 63,
+  "originalIssueUrl": "https://github.com/code-423n4/2024-07-reserve-validation/issues/63"
+}
