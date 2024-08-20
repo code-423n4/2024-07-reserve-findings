@@ -1,0 +1,10 @@
+{
+  "contest": 421,
+  "handle": "ParaTroopers",
+  "risk": "2",
+  "title": " `BasketHandler::price` returns the wrong lower end of the price estimate",
+  "issueId": 78,
+  "issueUrl": "https://github.com/code-423n4/2024-07-reserve-findings/issues/78",
+  "originalIssueId": 99,
+  "originalIssueUrl": "https://github.com/code-423n4/2024-07-reserve-validation/issues/99"
+}
