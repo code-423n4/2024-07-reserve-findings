@@ -1,0 +1,10 @@
+{
+  "contest": 421,
+  "handle": "0x52",
+  "risk": "2",
+  "title": "Using endtime for order cancelation deadline of gnosis auction could lead to bait and switch bid tactics",
+  "issueId": 63,
+  "issueUrl": "https://github.com/code-423n4/2024-07-reserve-findings/issues/63",
+  "originalIssueId": 200,
+  "originalIssueUrl": "https://github.com/code-423n4/2024-07-reserve-validation/issues/200"
+}
