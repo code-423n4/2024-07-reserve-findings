@@ -1,0 +1,10 @@
+{
+  "contest": 421,
+  "handle": "WildSniper",
+  "risk": "3",
+  "title": "in `BackingManagerP1::rebalance` Wrong assertion will lead to panic reverts",
+  "issueId": 69,
+  "issueUrl": "https://github.com/code-423n4/2024-07-reserve-findings/issues/69",
+  "originalIssueId": 158,
+  "originalIssueUrl": "https://github.com/code-423n4/2024-07-reserve-validation/issues/158"
+}
