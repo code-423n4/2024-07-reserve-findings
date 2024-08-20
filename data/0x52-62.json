@@ -1,0 +1,10 @@
+{
+  "contest": 421,
+  "handle": "0x52",
+  "risk": "2",
+  "title": "Auctioning revenue for rToken when issuance is disabled could lead to limited participation and worse pricing",
+  "issueId": 62,
+  "issueUrl": "https://github.com/code-423n4/2024-07-reserve-findings/issues/62",
+  "originalIssueId": 203,
+  "originalIssueUrl": "https://github.com/code-423n4/2024-07-reserve-validation/issues/203"
+}
