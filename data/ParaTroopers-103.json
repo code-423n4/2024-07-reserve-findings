@@ -1,0 +1,10 @@
+{
+  "contest": 421,
+  "handle": "ParaTroopers",
+  "risk": "2",
+  "title": "Some tokens revert if approval amounts are > type(uint96).max",
+  "issueId": 103,
+  "issueUrl": "https://github.com/code-423n4/2024-07-reserve-findings/issues/103",
+  "originalIssueId": 82,
+  "originalIssueUrl": "https://github.com/code-423n4/2024-07-reserve-validation/issues/82"
+}
