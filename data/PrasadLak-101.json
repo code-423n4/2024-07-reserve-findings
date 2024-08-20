@@ -1,0 +1,10 @@
+{
+  "contest": 421,
+  "handle": "PrasadLak",
+  "risk": "2",
+  "title": "dutchAuctionLength & batchAuctionLength are allowed set to zero.",
+  "issueId": 101,
+  "issueUrl": "https://github.com/code-423n4/2024-07-reserve-findings/issues/101",
+  "originalIssueId": 116,
+  "originalIssueUrl": "https://github.com/code-423n4/2024-07-reserve-validation/issues/116"
+}
