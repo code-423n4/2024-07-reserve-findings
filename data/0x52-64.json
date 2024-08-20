@@ -1,0 +1,10 @@
+{
+  "contest": 421,
+  "handle": "0x52",
+  "risk": "2",
+  "title": "Fixed#safeMulDiv rounds incorrect when rounding mode is set to ROUND",
+  "issueId": 64,
+  "issueUrl": "https://github.com/code-423n4/2024-07-reserve-findings/issues/64",
+  "originalIssueId": 195,
+  "originalIssueUrl": "https://github.com/code-423n4/2024-07-reserve-validation/issues/195"
+}
