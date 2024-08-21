@@ -1,0 +1,10 @@
+{
+  "contest": 421,
+  "handle": "0xbrett8571",
+  "risk": "2",
+  "title": "Incorrect Exchange Rate Calculation in `_scaleUp()` Function Allows Inflated RToken Supply and Insufficient Collateral Backing",
+  "issueId": 116,
+  "issueUrl": "https://github.com/code-423n4/2024-07-reserve-findings/issues/116",
+  "originalIssueId": 83,
+  "originalIssueUrl": "https://github.com/code-423n4/2024-07-reserve-validation/issues/83"
+}
