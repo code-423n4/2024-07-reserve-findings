@@ -1,0 +1,10 @@
+{
+  "contest": 421,
+  "handle": "MSaptarshi",
+  "risk": "2",
+  "title": "DutchAuction and BatchAuction is suspected to reorg attack",
+  "issueId": 117,
+  "issueUrl": "https://github.com/code-423n4/2024-07-reserve-findings/issues/117",
+  "originalIssueId": 71,
+  "originalIssueUrl": "https://github.com/code-423n4/2024-07-reserve-validation/issues/71"
+}
